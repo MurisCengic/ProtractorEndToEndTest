@@ -12,10 +12,30 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
+
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'Source/EndToEndTests/EndToEndTests/'
+
+- task: CmdLine@2
+  inputs:
+    script: 'webdriver-manager update'
+    workingDirectory: 'Source/EndToEndTests/EndToEndTests/'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $date=$(Get-Date).ToUniversalTime().ToString(‘d-M-yyyy-HH’);
+      Write-Host “##vso[task.setvariable variable=time]$date”
+    workingDirectory: 'Source/EndToEndTests/EndToEndTests/testResults/'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'xmlresults.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/Source/EndToEndTests/EndToEndTests/testResults/$(time)/'
