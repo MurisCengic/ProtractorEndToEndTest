@@ -19,12 +19,12 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: 'Source/EndToEndTests/EndToEndTests/'
+    workingDir: '/EndToEndTests/EndToEndTests/'
 
 - task: CmdLine@2
   inputs:
     script: 'webdriver-manager update'
-    workingDirectory: 'Source/EndToEndTests/EndToEndTests/'
+    workingDirectory: '/EndToEndTests/EndToEndTests/'
 
 - task: PowerShell@2
   inputs:
@@ -32,10 +32,10 @@ steps:
     script: |
       $date=$(Get-Date).ToUniversalTime().ToString(‘d-M-yyyy-HH’);
       Write-Host “##vso[task.setvariable variable=time]$date”
-    workingDirectory: 'Source/EndToEndTests/EndToEndTests/testResults/'
+    workingDirectory: '/EndToEndTests/EndToEndTests/testResults/'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'xmlresults.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/Source/EndToEndTests/EndToEndTests/testResults/$(time)/'
+    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/$(time)/'
