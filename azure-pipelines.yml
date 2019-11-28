@@ -19,12 +19,12 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: './EndToEndTes- task: 
+    workingDir: './EndToEndTests/EndToEndTests/'
+
 
 - task: CmdLine@2
   inputs:
     script: 'webdriver-manager update'
-
 
 - task: PowerShell@2
   inputs:
