@@ -24,7 +24,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: '"EndToEndTests/EndToEndTests/node_modules/protractor/bin/webdriver-manager update"'
+    script: 'webdriver-manager update'
 
 - task: PowerShell@2
   inputs:
