@@ -21,6 +21,9 @@ steps:
     command: 'install'
     workingDir: './EndToEndTests/EndToEndTests/'
 
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g protractor'
 
 - task: CmdLine@2
   inputs:
