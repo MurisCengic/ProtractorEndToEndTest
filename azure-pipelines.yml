@@ -23,7 +23,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'node_modules/.bin/webdriver-manager update'
+    script: 'node webdriver-manager start'
 
 - task: PowerShell@2
   inputs:
