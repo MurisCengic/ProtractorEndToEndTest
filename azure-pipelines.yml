@@ -25,7 +25,7 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'xmlresults.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTestste/testResults/29-11-2019-11/'
+    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/29-11-2019-11/'
     testRunTitle: 'Test run 1'
 
 
