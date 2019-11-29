@@ -8,6 +8,6 @@ export class SearchPage {
   }
 
   public static searchTextField(): ElementFinder {
-    return element(by.id('lst-ib'));
+    return element(by.xpath("//input[@name='q']"));
   }
 }
