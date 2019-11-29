@@ -55,19 +55,21 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'xmlresults.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/$(time)/'
+    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/'
     testRunTitle: 'Test run 2'
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'dir'
-    workingDirectory: './EndToEndTests/EndToEndTests/testResults/'
+    errorActionPreference: 'continue'
+    workingDirectory: './EndToEndTests/EndToEndTests/e2e/testResults/'
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/'
+    script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/'
+    errorActionPreference: 'continue'
 
 
 
