@@ -62,3 +62,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'dir'
+    workingDirectory: './EndToEndTests/EndToEndTests/testResults/'
+
