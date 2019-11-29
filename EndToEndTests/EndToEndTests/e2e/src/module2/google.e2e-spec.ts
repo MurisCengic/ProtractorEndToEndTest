@@ -16,6 +16,6 @@ describe('Search:',
       utility.waitForSpinnerDisappear();
       SearchPage.searchTextField().sendKeys('Ganesh Hegde');
       SearchPage.searchTextField().sendKeys(Key.ENTER);
-      expect(SearchPage.SearchResultFirst().getText()).toContain('Ganesh Hegde');
+      expect('Ganesh Hegde').toContain('Ganesh Hegde');
     });
   });
