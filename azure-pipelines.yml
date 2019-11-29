@@ -16,36 +16,28 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-# - task: Npm@1
-#   inputs:
-#     command: 'install'
-#     workingDir: './EndToEndTests/EndToEndTests/'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: './EndToEndTests/EndToEndTests/'
 
-# - task: PublishTestResults@2
-#   inputs:
-#     testResultsFormat: 'JUnit'
-#     testResultsFiles: 'xmlresults.xml'
-#     searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/29-11-2019-11/'
-#     testRunTitle: 'Test run 1'
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g protractor'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'webdriver-manager clean'
 
-# - task: CmdLine@2
-#   inputs:
-#     script: 'npm install -g protractor'
+- task: CmdLine@2
+  inputs:
+    script: 'webdriver-manager update --versions.chrome=77.0.3865.40'
 
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'webdriver-manager clean'
-
-# - task: CmdLine@2
-#   inputs:
-#     script: 'webdriver-manager update --versions.chrome=77.0.3865.40'
-
-# - task: CmdLine@2
-#   inputs:
-#     script: 'protractor protractor.conf.js'
-#     workingDirectory: './EndToEndTests/EndToEndTests/e2e/'
+- task: CmdLine@2
+  inputs:
+    script: 'protractor protractor.conf.js'
+    workingDirectory: './EndToEndTests/EndToEndTests/e2e/'
 
 - task: PowerShell@2
   inputs:
@@ -60,3 +52,9 @@ steps:
 #     testResultsFiles: 'xmlresults.xml'
 #     searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/$(time)/'
     
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'xmlresults.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/testResults/$(time)/'
+    testRunTitle: 'Test run 2'
