@@ -16,66 +16,70 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-# - task: Npm@1
-#   inputs:
-#     command: 'install'
-#     workingDir: './EndToEndTests/EndToEndTests/'
-#   displayName: 'npm install'
-# - task: CmdLine@2
-#   inputs:
-#     script: 'npm install -g protractor'
-#   displayName: 'Install protractor'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: './EndToEndTests/EndToEndTests/'
+  displayName: 'npm install'
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g protractor'
+  displayName: 'Install protractor'
 
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'webdriver-manager clean'
-#   displayName: 'webdriver clean'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'webdriver-manager clean'
+  displayName: 'webdriver clean'
 
-# - task: CmdLine@2
-#   inputs:
-#     script: 'webdriver-manager update --versions.chrome=77.0.3865.40'
-#   displayName: 'webdriver update'
+- task: CmdLine@2
+  inputs:
+    script: 'webdriver-manager update --versions.chrome=77.0.3865.40'
+  displayName: 'webdriver update'
 
-# - task: CmdLine@2
-#   inputs:
-#     script: 'protractor protractor.conf.js'
-#     workingDirectory: './EndToEndTests/EndToEndTests/e2e/'
-#   displayName: 'protractor conf'
+- task: CmdLine@2
+  inputs:
+    script: 'protractor protractor.conf.js'
+    workingDirectory: './EndToEndTests/EndToEndTests/e2e/'
+  displayName: 'protractor conf'
 
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       $date=$(Get-Date).ToUniversalTime().ToString('d-M-yyyy-HH');
-#       Write-Host "##vso[task.setvariable variable=time;]$date"
-#   displayName: 'Set time variable'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $date=$(Get-Date).ToUniversalTime().ToString('d-M-yyyy-HH');
+      Write-Host "##vso[task.setvariable variable=time;]$date"
+  displayName: 'Set time variable'
   
-# - task: PublishTestResults@2
-#   inputs:
-#     testResultsFormat: 'JUnit'
-#     testResultsFiles: 'xmlresults.xml'
-#     searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/'
-#     testRunTitle: 'Test run 2'
-
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'dir'
-#     errorActionPreference: 'continue'
-#     workingDirectory: './EndToEndTests/EndToEndTests/e2e/testResults/'
-
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/'
-#     errorActionPreference: 'continue'
-
-
-
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'NUnit'
-    testResultsFiles: 'NUnit-test.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/'
-    testRunTitle: 'NUnit test'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'xmlresults.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/'
+    testRunTitle: 'Test run 2'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'dir'
+    errorActionPreference: 'continue'
+    workingDirectory: './EndToEndTests/EndToEndTests/e2e/testResults/'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/'
+    errorActionPreference: 'continue'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/chrome-test-report.html'
+    ArtifactName: 'chrome-test-report'
+    publishLocation: 'Container'
+
+# - task: PublishTestResults@2
+#   inputs:
+#     testResultsFormat: 'NUnit'
+#     testResultsFiles: 'NUnit-test.xml'
+#     searchFolder: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/'
+#     testRunTitle: 'NUnit test'
