@@ -71,11 +71,17 @@ steps:
     script: 'dir $(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/'
     errorActionPreference: 'continue'
 
-- task: PublishBuildArtifacts@1
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/chrome-test-report.html'
+#     ArtifactName: 'chrome-test-report'
+#     publishLocation: 'Container'
+
+- task: PublishPipelineArtifact@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/chrome-test-report.html'
-    ArtifactName: 'chrome-test-report'
-    publishLocation: 'Container'
+    targetPath: '$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/e2e/testResults/$(time)/chrome-test-report.html'
+    artifact: 'Test'
+    publishLocation: 'pipeline'
 
 # - task: PublishTestResults@2
 #   inputs:
