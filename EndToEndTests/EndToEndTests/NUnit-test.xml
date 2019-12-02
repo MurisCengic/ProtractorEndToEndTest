@@ -19,7 +19,11 @@
       <test-suite type="TestSuite" id="0-1005" name="Engine" fullname="NUnit.Engine" runstate="Runnable" testcasecount="2" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.071241" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="2">
         <test-suite type="TestSuite" id="0-1006" name="Addins" fullname="NUnit.Engine.Addins" runstate="Runnable" testcasecount="2" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.067291" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="2">
           <test-suite type="TestFixture" id="0-1000" name="NUnit2XmlResultWriterTests" fullname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests" classname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.060689" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="2">
-            <test-case id="0-1001" name="CheckExtensionAttribute" fullname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests.CheckExtensionAttribute" methodname="CheckExtensionAttribute" classname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests" runstate="Runnable" seed="2009537471" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.018987" asserts="1" />
+            <test-case id="0-1001" name="CheckExtensionAttribute" fullname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests.CheckExtensionAttribute" methodname="CheckExtensionAttribute" classname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests" runstate="Runnable" seed="2009537471" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.018987" asserts="1">
+              <attachment>
+                <filePath>$(System.DefaultWorkingDirectory)/EndToEndTests/EndToEndTests/NUnit-screen.png.png</filePath>
+              </attachment>
+            </test-case>
             <test-case id="0-1002" name="CheckExtensionPropertyAttribute" fullname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests.CheckExtensionPropertyAttribute" methodname="CheckExtensionPropertyAttribute" classname="NUnit.Engine.Addins.NUnit2XmlResultWriterTests" runstate="Runnable" seed="747975759" result="Passed" start-time="2017-07-05 13:25:25Z" end-time="2017-07-05 13:25:25Z" duration="0.019539" asserts="1" />
           </test-suite>
         </test-suite>
